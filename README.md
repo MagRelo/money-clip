@@ -1,6 +1,6 @@
-# money-clip
+*** Forked to add 'staleAfter' option. use this option when 'set'ing a value. When retrieved, the key will be deleted if the current time is after the 'staleAfter' time.
 
-test
+# money-clip
 
 ![](https://img.shields.io/npm/dm/money-clip.svg)![](https://img.shields.io/npm/v/money-clip.svg)![](https://img.shields.io/npm/l/money-clip.svg)
 
