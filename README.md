@@ -1,5 +1,7 @@
 # money-clip
 
+test
+
 ![](https://img.shields.io/npm/dm/money-clip.svg)![](https://img.shields.io/npm/v/money-clip.svg)![](https://img.shields.io/npm/l/money-clip.svg)
 
 For managing your client side cache. Tiny wrapper over Jake Archibald's tiny IndexedDB wrapper, [idb-keyval](https://github.com/jakearchibald/idb-keyval) adding support for versioning and max age.
