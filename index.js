@@ -5,7 +5,7 @@ export const del = idbKeyVal.delete
 export const clear = idbKeyVal.clear
 export const keys = idbKeyVal.keys
 
-const defaultOpts = { maxAge: Infinity, version: 0, lib: idbKeyVal }
+const defaultOpts = {staleAfter: Infinity, maxAge: Infinity, version: 0, lib: idbKeyVal }
 const getOpts = passedOptions => Object.assign({}, defaultOpts, passedOptions)
 
 export const get = (key, opts) => {
@@ -15,7 +15,7 @@ export const get = (key, opts) => {
     .then(JSON.parse)
     .then(parsed => {
       const age = Date.now() - parsed.time
-      if (age > maxAge || version !== parsed.version) {
+      if (parsed.staleAfter < Date.now() || age > maxAge || version !== parsed.version) {
         lib.delete(key)
         return null
       }
@@ -25,13 +25,14 @@ export const get = (key, opts) => {
 }
 
 export const set = (key, data, spec) => {
-  const { lib, version } = getOpts(spec)
+  const { staleAfter, lib, version } = getOpts(spec)
   return lib
     .set(
       key,
       JSON.stringify({
         version,
         time: Date.now(),
+        staleAfter: staleAfter
         data
       })
     )
