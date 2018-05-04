@@ -32,7 +32,7 @@ export const set = (key, data, spec) => {
       JSON.stringify({
         version,
         time: Date.now(),
-        staleAfter: staleAfter
+        staleAfter: staleAfter,
         data
       })
     )
